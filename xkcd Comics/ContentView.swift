@@ -26,9 +26,15 @@ struct ContentView: View {
                 .padding()
                 
                 List(comics) { comic in
-                    Text(comic.title)
-                        .font(.headline)
+                    NavigationLink(
+                        destination: comic.image,
+                        label: {
+                            Text(comic.title)
+                        })
                 }
+            }
+                .onAppear() {
+                fetchComics(to: 10)
             }
             .navigationBarTitle("xkcd Comic Reader")
         }
@@ -37,33 +43,43 @@ struct ContentView: View {
     func fetchComics(to: Int) {
         // Get last comic number
         let lastComicNumber = getComic(number: -1).id
-        if to == -1 {  // Fetch all
-            for number in 1...lastComicNumber {
-                var newFetchedComic = getComic(number: number)
-                comics.append(newFetchedComic)
-            }
+        let startIndex = 1
+        var stopIndex: Int
+        
+        if (to == -1) || (to > lastComicNumber) {  // Fetch all
+            stopIndex = lastComicNumber
+        } else {  // Fetch up to No."to"
+            stopIndex = to
+        }
+        
+        // Actually fetch them
+        for number in startIndex...stopIndex {
+            let newFetchedComic = getComic(number: number)
+            comics.append(newFetchedComic)
         }
     }
     
     func getComic(number: Int) -> Comic {
         // Syntax sugar of parseData
+        var stringNumber = String(number)
         if number == -1 {  // Get the last one
-            let stringNumber = ""
-        } else {
-            let stringNumber = String(number)
+            stringNumber = ""
         }
         return try! parseData(data: Data(contentsOf: URL(string: String(format: apiFormat, stringNumber))!))
     }
     
     func parseData(data: Data) -> Comic {
-        let json = try! JSON(data: data)
-        var parsedComic = Comic()
-        parsedComic.id = json["num"].intValue
-        parsedComic.title = json["title"].stringValue
-        parsedComic.imageURL = json["img"].stringValue
-        parsedComic.comments = json["alt"].stringValue
-        return parsedComic
+        if let json = try? JSON(data: data) {
+            var parsedComic = Comic()
+            parsedComic.id = json["num"].intValue
+            parsedComic.title = json["title"].stringValue
+            parsedComic.imageURL = json["img"].stringValue
+            parsedComic.comments = json["alt"].stringValue
+            return parsedComic
+        }
+        return Comic()
     }
+}
     
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
@@ -72,8 +88,7 @@ struct ContentView: View {
     }
     
     struct Comic: Identifiable {
-        @State var imageURL = String()
-        
+        var imageURL = String()
         var id = 0
         var title = String()
         var comments = String()
