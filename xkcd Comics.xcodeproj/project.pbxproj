@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,9 @@
 		D54A1D8626B31AB7003A1226 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D54A1D8526B31AB7003A1226 /* Preview Assets.xcassets */; };
 		D54A1D9126B31AB7003A1226 /* xkcd_ComicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A1D9026B31AB7003A1226 /* xkcd_ComicsTests.swift */; };
 		D54A1D9C26B31AB7003A1226 /* xkcd_ComicsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A1D9B26B31AB7003A1226 /* xkcd_ComicsUITests.swift */; };
+		D54A1DAD26B32149003A1226 /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = D54A1DAC26B32149003A1226 /* URLImageStore */; };
+		D54A1DAF26B32149003A1226 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = D54A1DAE26B32149003A1226 /* URLImage */; };
+		D54A1DB126B3246C003A1226 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A1DB026B3246C003A1226 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,7 @@
 		D54A1D9726B31AB7003A1226 /* xkcd ComicsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "xkcd ComicsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54A1D9B26B31AB7003A1226 /* xkcd_ComicsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xkcd_ComicsUITests.swift; sourceTree = "<group>"; };
 		D54A1D9D26B31AB7003A1226 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D54A1DB026B3246C003A1226 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D54A1DAF26B32149003A1226 /* URLImage in Frameworks */,
+				D54A1DAD26B32149003A1226 /* URLImageStore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +105,7 @@
 				D54A1D8026B31AB5003A1226 /* ContentView.swift */,
 				D54A1D8226B31AB7003A1226 /* Assets.xcassets */,
 				D54A1D8726B31AB7003A1226 /* Info.plist */,
+				D54A1DB026B3246C003A1226 /* SwiftyJSON.swift */,
 				D54A1D8426B31AB7003A1226 /* Preview Content */,
 			);
 			path = "xkcd Comics";
@@ -146,6 +153,10 @@
 			dependencies = (
 			);
 			name = "xkcd Comics";
+			packageProductDependencies = (
+				D54A1DAC26B32149003A1226 /* URLImageStore */,
+				D54A1DAE26B32149003A1226 /* URLImage */,
+			);
 			productName = "xkcd Comics";
 			productReference = D54A1D7B26B31AB5003A1226 /* xkcd Comics.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +228,9 @@
 				Base,
 			);
 			mainGroup = D54A1D7226B31AB5003A1226;
+			packageReferences = (
+				D54A1DAB26B32149003A1226 /* XCRemoteSwiftPackageReference "url-image" */,
+			);
 			productRefGroup = D54A1D7C26B31AB5003A1226 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D54A1DB126B3246C003A1226 /* SwiftyJSON.swift in Sources */,
 				D54A1D8126B31AB5003A1226 /* ContentView.swift in Sources */,
 				D54A1D7F26B31AB5003A1226 /* xkcd_ComicsApp.swift in Sources */,
 			);
@@ -580,6 +595,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D54A1DAB26B32149003A1226 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D54A1DAC26B32149003A1226 /* URLImageStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D54A1DAB26B32149003A1226 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImageStore;
+		};
+		D54A1DAE26B32149003A1226 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D54A1DAB26B32149003A1226 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D54A1D7326B31AB5003A1226 /* Project object */;
 }
