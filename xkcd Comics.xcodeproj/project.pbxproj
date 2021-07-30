@@ -16,6 +16,7 @@
 		D54A1DAD26B32149003A1226 /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = D54A1DAC26B32149003A1226 /* URLImageStore */; };
 		D54A1DAF26B32149003A1226 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = D54A1DAE26B32149003A1226 /* URLImage */; };
 		D54A1DB126B3246C003A1226 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A1DB026B3246C003A1226 /* SwiftyJSON.swift */; };
+		D54A550F26B4034700169E1D /* ComicDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54A550E26B4034700169E1D /* ComicDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		D54A1D9B26B31AB7003A1226 /* xkcd_ComicsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xkcd_ComicsUITests.swift; sourceTree = "<group>"; };
 		D54A1D9D26B31AB7003A1226 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D54A1DB026B3246C003A1226 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		D54A550E26B4034700169E1D /* ComicDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				D54A1D7E26B31AB5003A1226 /* xkcd_ComicsApp.swift */,
 				D54A1D8026B31AB5003A1226 /* ContentView.swift */,
+				D54A550E26B4034700169E1D /* ComicDetailsView.swift */,
 				D54A1D8226B31AB7003A1226 /* Assets.xcassets */,
 				D54A1D8726B31AB7003A1226 /* Info.plist */,
 				D54A1DB026B3246C003A1226 /* SwiftyJSON.swift */,
@@ -274,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D54A1DB126B3246C003A1226 /* SwiftyJSON.swift in Sources */,
+				D54A550F26B4034700169E1D /* ComicDetailsView.swift in Sources */,
 				D54A1D8126B31AB5003A1226 /* ContentView.swift in Sources */,
 				D54A1D7F26B31AB5003A1226 /* xkcd_ComicsApp.swift in Sources */,
 			);

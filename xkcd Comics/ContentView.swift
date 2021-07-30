@@ -16,10 +16,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Button(action: {}, label: {
-                    Text("Jump to Random Comic")
-                        .padding(8)
-                })
+                NavigationLink("Jump to Random Comic", destination: ComicDetailsView(comic: comics.randomElement() ?? comics[0]))
                 .background(Color.blue)
                 .cornerRadius(5)
                 .foregroundColor(.white)
@@ -27,23 +24,25 @@ struct ContentView: View {
                 
                 List(comics) { comic in
                     NavigationLink(
-                        destination: comic.image,
+                        destination: ComicDetailsView(comic: comic),
                         label: {
                             Text(comic.title)
                         })
                 }
             }
-                .onAppear() {
-                fetchComics(to: 10)
+            .onAppear() {
+                if comics.isEmpty {
+                    fetchComics(to: 10)
+                }
             }
             .navigationBarTitle("xkcd Comic Reader")
         }
     }
     
-    func fetchComics(to: Int) {
+    func fetchComics(from: Int = 1, to: Int) {
         // Get last comic number
         let lastComicNumber = getComic(number: -1).id
-        let startIndex = 1
+        let startIndex = from
         var stopIndex: Int
         
         if (to == -1) || (to > lastComicNumber) {  // Fetch all
@@ -52,7 +51,7 @@ struct ContentView: View {
             stopIndex = to
         }
         
-        // Actually fetch them
+        // Actually do the fetching
         for number in startIndex...stopIndex {
             let newFetchedComic = getComic(number: number)
             comics.append(newFetchedComic)
@@ -80,24 +79,24 @@ struct ContentView: View {
         return Comic()
     }
 }
-    
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+struct Comic: Identifiable {
+    var imageURL = String()
+    var id = 0
+    var title = String()
+    var comments = String()
+    var image: some View {
+        URLImage(URL(string: self.imageURL)!) {
+            image in
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fit)
         }
     }
-    
-    struct Comic: Identifiable {
-        var imageURL = String()
-        var id = 0
-        var title = String()
-        var comments = String()
-        var image: some View {
-            URLImage(URL(string: self.imageURL)!) {
-                image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            }
-        }
-    }
+}
