@@ -23,6 +23,12 @@ struct ContentView: View {
                             Text(comic.title)
                         })
                 }
+                .listStyle(InsetListStyle())
+                
+                Button("Fetch More") {
+                    let lastComicNo = comics[comics.count-1].id
+                    fetchComics(from: lastComicNo, to: lastComicNo+10)
+                }
             }
             .onAppear() {
                 if comics.isEmpty {
@@ -86,8 +92,7 @@ struct Comic: Identifiable {
     var title = String()
     var comments = String()
     var image: some View {
-        URLImage(URL(string: self.imageURL)!) {
-            image in
+        URLImage(URL(string: self.imageURL)!) { image in
             image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
