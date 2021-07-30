@@ -27,7 +27,7 @@ struct ContentView: View {
                 
                 Button("Fetch More") {
                     let lastComicNo = comics[comics.count-1].id
-                    fetchComics(from: lastComicNo, to: lastComicNo+10)
+                    fetchComics(from: lastComicNo+1, to: lastComicNo+10)
                 }
             }
             .onAppear() {
