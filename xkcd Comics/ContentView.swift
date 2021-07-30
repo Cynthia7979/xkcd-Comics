@@ -16,12 +16,6 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink("Jump to Random Comic", destination: ComicDetailsView(comic: comics.randomElement() ?? comics[0]))
-                .background(Color.blue)
-                .cornerRadius(5)
-                .foregroundColor(.white)
-                .padding()
-                
                 List(comics) { comic in
                     NavigationLink(
                         destination: ComicDetailsView(comic: comic),
